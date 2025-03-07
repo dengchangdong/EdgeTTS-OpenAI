@@ -60,7 +60,8 @@ async function handleRequest(request) {
     const requestUrl = new URL(request.url);
     const path = requestUrl.pathname;
     
-    if (path === "/tts/v1/audio/speech") {
+    // 修改路径判断逻辑，支持任意路由前缀
+    if (path.endsWith("/v1/audio/speech")) {
         try {
             const requestBody = await request.json();
             let { 
